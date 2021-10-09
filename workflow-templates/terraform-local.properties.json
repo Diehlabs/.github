@@ -1,0 +1,10 @@
+{
+  "name": "Diehlabs Terraform Local Run Workflow",
+  "description": "Diehlabs Terraform Local Run CI workflow template.",
+  "iconName": "terraformio-icon",
+  "categories": [
+      "Go",
+      "HCL",
+      "Terraform"
+  ]
+}
