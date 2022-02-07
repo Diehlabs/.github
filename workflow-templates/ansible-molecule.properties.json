@@ -1,0 +1,11 @@
+{
+    "name": "Diehlabs Ansible Molecule Testing Workflow",
+    "description": "Diehlabs Ansible Molecule teesting CI workflow template.",
+    "iconName": "terraformio-icon",
+    "categories": [
+        "Go",
+        "HCL",
+        "Terraform"
+    ]
+  }
+  

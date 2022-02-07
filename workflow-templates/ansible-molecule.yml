@@ -1,0 +1,37 @@
+name: Terraform Configuration Run
+on:
+  push:
+    branches:
+      - '**'
+  pull_request:
+    branches:
+      - '$default-branch'
+  workflow_dispatch:
+  workflow_call:
+
+jobs:
+    molecule:
+    name: Molecule
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install CI deps
+        run: |
+          pip3 install \
+            ansible \
+            ansible-lint \
+            docker \
+            molecule[docker]
+
+      - name: Run tests
+        run: molecule test
+        env:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
