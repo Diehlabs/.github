@@ -1,4 +1,4 @@
-name: Ansible Release
+name: Github Release
 on:
   workflow_call:
 
