@@ -1,4 +1,4 @@
-name: Terraform Module Build
+name: Terraform Module CI
 on:
   push:
     branches:
@@ -12,24 +12,16 @@ permissions:
   contents: read
 
 jobs:
-  terrascan:
-    permissions:
-      contents: read
-      security-events: write
-    uses: Diehlabs/shared-workflows/.github/workflows/terrascan.yml@main
-
-  terratest:
-    permissions:
-      contents: read
-      checks: write
-    uses: Diehlabs/shared-workflows/.github/workflows/terratest.yml@main
-    with:
-      terraform_version: 1.0.8
-      working_directory: tests
-
-  release:
-    needs: [terrascan, terratest]
-    if: github.event_name == 'push' && github.ref_name == github.event.repository.default_branch
+  ci:
     permissions:
       contents: write
-    uses: Diehlabs/shared-workflows/.github/workflows/github-release.yml@main
+      checks: write
+      security-events: write
+    uses: Diehlabs/shared-workflows/.github/workflows/terraform-module.yml@v0.2.13
+    with:
+      terraform_version: 1.0.8
+      test_directory: tests
+      # Set to false for modules whose tests need cloud credentials
+      # (terraform_version is then not required)
+      terratest: true
+    secrets: inherit

@@ -1,9 +1,0 @@
-{
-  "name": "Diehlabs Terraform Module Workflow (no Terratest)",
-  "description": "Diehlabs Terraform Module CI without Terratest, for modules whose tests need provider credentials.",
-  "iconName": "terraformio-icon",
-  "categories": [
-      "HCL",
-      "Terraform"
-  ]
-}
